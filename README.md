@@ -1,4 +1,4 @@
-Spark DistCp
+Hadoop DistCp
 ===============
 
 ### Description
@@ -57,25 +57,19 @@ Configuration contains config file (swift.conf - for customizing Swift Storage e
 ```
 
 ### Run
-Run application by submitting it to Spark via command line, providing mandatory parameters, example:
+Run application by submitting it to Hadoop via command line, providing mandatory parameters, example:
 
 **Copy object from Swift Storage to HDFS**
 ```
-spark-submit --deploy-mode cluster --conf spark.executor.memory=24g --conf spark.network.timeout=600 --conf spark.cores.max=210 --conf spark.storage.blockManagerHeartBeatMs=300000 --conf spark.mesos.coarse=true \
---class com.cisco.mantl.SparkDistcp hdfs://hdfs/demo-applications/scripts/spark-distcp-with-dependencies.jar \
---swiftConf "/etc/swift.conf" --swiftContainer sasa --swiftUri "tmp/tmp1.txt" --hdfsUri "/demo-applications/tmp.txt" -m fromSwiftToHdfs
+hadoop fs -jar spark-distcp-with-dependencies.jar com.cisco.mantl.HadoopDistcp --swiftConf "/etc/swift.conf" --swiftContainer sasa --swiftUri "tmp/tmp1.txt" --hdfsUri "/demo-applications/tmp.txt" -m fromSwiftToHdfs
 ```
 
 **Copy file from HDFS to Swift Storage**
 ```
-spark-submit --deploy-mode cluster --conf spark.executor.memory=24g --conf spark.network.timeout=600 --conf spark.cores.max=210 --conf spark.storage.blockManagerHeartBeatMs=300000 --conf spark.mesos.coarse=true \
---class com.cisco.mantl.SparkDistcp hdfs://hdfs/demo-applications/scripts/spark-distcp-with-dependencies.jar \
---swiftConf "/etc/swift.conf" --swiftContainer sasa --swiftUri "tmp/tmp1.txt" --hdfsUri "/demo-applications/tmp1.txt" -m fromHdfsToSwift
+hadoop fs -jar spark-distcp-with-dependencies.jar com.cisco.mantl.HadoopDistcp --swiftConf "/etc/swift.conf" --swiftContainer sasa --swiftUri "tmp/tmp1.txt" --hdfsUri "/demo-applications/tmp1.txt" -m fromHdfsToSwift
 ```
 
 **Copy file on HDFS**
 ```
-spark-submit --deploy-mode cluster --conf spark.executor.memory=24g --conf spark.network.timeout=600 --conf spark.cores.max=210 --conf spark.storage.blockManagerHeartBeatMs=300000 --conf spark.mesos.coarse=true \
---class com.cisco.mantl.SparkDistcp hdfs://hdfs/demo-applications/scripts/spark-distcp-with-dependencies.jar \
---hdfsSrc "/demo-applications/tmp1.txt" --hdfsDst "/demo-applications/tmp6.txt" -m fromHdfsToHdfs
+hadoop fs -jar spark-distcp-with-dependencies.jar com.cisco.mantl.HadoopDistcp --hdfsSrc "/demo-applications/tmp1.txt" --hdfsDst "/demo-applications/tmp6.txt" -m fromHdfsToHdfs
 ```
