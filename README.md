@@ -61,15 +61,15 @@ Run application by submitting it to Hadoop via command line, providing mandatory
 
 **Copy object from Swift Storage to HDFS**
 ```
-hadoop fs -jar spark-distcp-with-dependencies.jar com.cisco.mantl.HadoopDistcp --swiftConf "/etc/swift.conf" --swiftContainer sasa --swiftUri "tmp/tmp1.txt" --hdfsUri "/demo-applications/tmp.txt" -m fromSwiftToHdfs
+hadoop jar hadoop-distcp-with-dependencies.jar com.cisco.mantl.HadoopDistcp --swiftConf "/etc/swift.conf" --swiftContainer sasa --swiftUri "tmp/tmp1.txt" --hdfsUri "/demo-applications/tmp.txt" -m fromSwiftToHdfs
 ```
 
 **Copy file from HDFS to Swift Storage**
 ```
-hadoop fs -jar spark-distcp-with-dependencies.jar com.cisco.mantl.HadoopDistcp --swiftConf "/etc/swift.conf" --swiftContainer sasa --swiftUri "tmp/tmp1.txt" --hdfsUri "/demo-applications/tmp1.txt" -m fromHdfsToSwift
+hadoop jar hadoop-distcp-with-dependencies.jar com.cisco.mantl.HadoopDistcp --swiftConf "/etc/swift.conf" --swiftContainer sasa --swiftUri "tmp/tmp1.txt" --hdfsUri "/demo-applications/tmp1.txt" -m fromHdfsToSwift
 ```
 
 **Copy file on HDFS**
 ```
-hadoop fs -jar spark-distcp-with-dependencies.jar com.cisco.mantl.HadoopDistcp --hdfsSrc "/demo-applications/tmp1.txt" --hdfsDst "/demo-applications/tmp6.txt" -m fromHdfsToHdfs
+hadoop jar hadoop-distcp-with-dependencies.jar com.cisco.mantl.HadoopDistcp --hdfsSrc "/demo-applications/tmp1.txt" --hdfsDst "/demo-applications/tmp6.txt" -m fromHdfsToHdfs
 ```

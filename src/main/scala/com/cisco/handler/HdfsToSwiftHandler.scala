@@ -3,8 +3,6 @@ package com.cisco.handler
 import com.incu6us.openstack.swiftstorage.SwiftStorage
 import org.apache.hadoop.fs.{FileSystem, Path}
 import org.openstack4j.model.common.Payloads
-import org.openstack4j.model.identity.Access
-import org.openstack4j.model.storage.`object`.SwiftObject
 
 /**
  * Created by vpryimak on 04.11.2015.
